@@ -8,7 +8,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ViteThemeProvider
       themes={['light', 'dark']}
-      defaultTheme="light"
+      defaultTheme="dark"
       attribute="class"
       animationType={ThemeAnimationType.CIRCLE}
       duration={600}

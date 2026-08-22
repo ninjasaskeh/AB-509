@@ -56,8 +56,8 @@ const dockApps = [
   },
   {
     id: "contact",
-    name: "Contacts",
-    icon: "contact.png",
+    name: "WhatsApp",
+    icon: "whatsapp.png",
     canOpen: true,
   },
   {
@@ -71,31 +71,6 @@ const dockApps = [
     name: "Trash",
     icon: "trash.png",
     canOpen: false,
-  },
-];
-
-// "Stories" — Safari window content, told from Tessa's side
-const blogPosts = [
-  {
-    id: 1,
-    date: "The day we met",
-    title: "The Day We Met",
-    image: "/images/gallery/memory-04.jpg",
-    link: "#",
-  },
-  {
-    id: 2,
-    date: "A moment I keep replaying",
-    title: "A Moment I'll Never Forget",
-    image: "/images/gallery/memory-09.jpg",
-    link: "#",
-  },
-  {
-    id: 3,
-    date: "The easiest decision I've made",
-    title: "Why I Chose You",
-    image: "/images/gallery/memory-14.jpg",
-    link: "#",
   },
 ];
 
@@ -144,7 +119,7 @@ const photosLinks = [
     layout: "hero",
     photos: [4, 8, 1, 21, 22].map((n) => ({
       id: n,
-      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.webp`,
     })),
   },
   {
@@ -154,7 +129,7 @@ const photosLinks = [
     layout: "towers",
     photos: [11, 20, 15, 6, 13, 18].map((n) => ({
       id: n,
-      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.webp`,
     })),
   },
   {
@@ -164,7 +139,7 @@ const photosLinks = [
     layout: "quad",
     photos: [2, 9, 16, 23].map((n) => ({
       id: n,
-      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.webp`,
     })),
   },
   {
@@ -174,7 +149,7 @@ const photosLinks = [
     layout: "banners",
     photos: [5, 7, 12, 14, 28, 29].map((n) => ({
       id: n,
-      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.webp`,
     })),
   },
   {
@@ -184,20 +159,12 @@ const photosLinks = [
     layout: "strip",
     photos: [3, 10, 17, 19, 24].map((n) => ({
       id: n,
-      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.webp`,
     })),
   },
 ];
 
-export {
-  navLinks,
-  navIcons,
-  dockApps,
-  blogPosts,
-  techStack,
-  socials,
-  photosLinks,
-};
+export { navLinks, navIcons, dockApps, techStack, socials, photosLinks };
 
 // Copy that used to be hardcoded directly in JSX — centralized here so it's
 // a single edit for the client to personalize later.
@@ -212,7 +179,7 @@ export const SITE_COPY = {
     brand: "AB-509",
   },
   contact: {
-    avatar: "/images/gallery/memory-01.jpg",
+    avatar: "/images/gallery/memory-01.webp",
     heading: "For you, Abraham",
     bio: "I know it's still early for us, but I wanted today to feel special anyway. Every little moment with you so far has been one I want to keep. Happy birthday — here's to many more.",
     signoff: "From, Tessa",
@@ -228,7 +195,7 @@ export const SITE_COPY = {
 export const LETTER_DATA = {
   name: "letter-for-abraham.txt",
   subtitle: "For Abraham, happy 24th birthday",
-  image: "/images/gallery/memory-02.jpg",
+  image: "/images/gallery/memory-02.webp",
   description: [
     "Happy birthday, Abraham. I've been trying to write this for a few days now, and I still don't think I've found the right words — so I'll just say what's true.",
     "We're still new, you and me. But somehow it already feels easy — like I don't have to try so hard to be myself around you. That's rare, and I don't take it for granted.",
@@ -269,12 +236,12 @@ const WORK_LOCATION = {
         },
         {
           id: 4,
-          name: "memory-01.jpg",
+          name: "memory-01.webp",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/gallery/memory-05.jpg",
+          imageUrl: "/images/gallery/memory-05.webp",
         },
       ],
     },
@@ -304,12 +271,12 @@ const WORK_LOCATION = {
         },
         {
           id: 4,
-          name: "memory-02.jpg",
+          name: "memory-02.webp",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 left-80",
-          imageUrl: "/images/gallery/memory-10.jpg",
+          imageUrl: "/images/gallery/memory-10.webp",
         },
       ],
     },
@@ -339,12 +306,12 @@ const WORK_LOCATION = {
         },
         {
           id: 4,
-          name: "memory-03.jpg",
+          name: "memory-03.webp",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/gallery/memory-15.jpg",
+          imageUrl: "/images/gallery/memory-15.webp",
         },
       ],
     },
@@ -365,7 +332,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/gallery/memory-06.jpg",
+      imageUrl: "/images/gallery/memory-06.webp",
     },
     {
       id: 2,
@@ -374,7 +341,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/gallery/memory-11.jpg",
+      imageUrl: "/images/gallery/memory-11.webp",
     },
     {
       id: 3,
@@ -383,7 +350,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/gallery/memory-16.jpg",
+      imageUrl: "/images/gallery/memory-16.webp",
     },
     {
       id: 4,
@@ -391,7 +358,7 @@ const ABOUT_LOCATION = {
       icon: "/images/txt.png",
       kind: "file",
       fileType: "txt",
-      position: "top-60 left-5",
+      position: "top-50 left-5",
       ...LETTER_DATA,
     },
   ],
@@ -411,7 +378,7 @@ const TRASH_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-10",
-      imageUrl: "/images/gallery/memory-20.jpg",
+      imageUrl: "/images/gallery/memory-20.webp",
     },
     {
       id: 2,
@@ -420,7 +387,7 @@ const TRASH_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-40 left-80",
-      imageUrl: "/images/gallery/memory-25.jpg",
+      imageUrl: "/images/gallery/memory-25.webp",
     },
   ],
 };
