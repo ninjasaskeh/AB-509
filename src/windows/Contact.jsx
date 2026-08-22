@@ -1,6 +1,6 @@
 import React from "react";
 import WindowWrapper from "@hoc/WindowWrapper.jsx";
-import { socials } from "@constants/index.js";
+import { socials, SITE_COPY } from "@constants/index.js";
 import { WindowControls } from "@components/index.js";
 
 const Contact = () => {
@@ -8,19 +8,19 @@ const Contact = () => {
     <>
       <div id="window-header">
         <WindowControls target="contact" />
-        <h2>Contact Me</h2>
+        <h2>Contacts</h2>
       </div>
 
       <div className="p-5 space-y-5">
         <img
-          src="/images/adrian.jpg"
-          alt="adrian"
-          className="w-20 rounded-full"
+          src={SITE_COPY.contact.avatar}
+          alt="Abraham"
+          className="w-20 rounded-full object-cover"
         />
 
-        <h3>Let's Connect</h3>
-        <p>Got an idea? A bug to squash? Or just wanna talk tech? I'm in.</p>
-        <p>ariefmaizaki@gmail.com</p>
+        <h3>{SITE_COPY.contact.heading}</h3>
+        <p className="dark:text-gray-300">{SITE_COPY.contact.bio}</p>
+        <p className="dark:text-gray-300">{SITE_COPY.contact.signoff}</p>
 
         <ul>
           {socials.map(({ id, bg, link, icon, text }) => (

@@ -18,8 +18,8 @@ const Image = () => {
         <h2 className="text-sm font-semibold">{name}</h2>
       </div>
 
-      <div className="bg-white h-full overflow-hidden flex flex-col">
-        <div className="flex-1 flex items-center justify-center p-4 bg-gray-50">
+      <div className="bg-white dark:bg-neutral-900 h-full overflow-hidden flex flex-col transition-colors">
+        <div className="flex-1 flex items-center justify-center p-4 bg-gray-50 dark:bg-neutral-800">
           <img
             src={imageUrl}
             alt={name}

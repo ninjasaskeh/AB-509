@@ -1,206 +1,191 @@
 const navLinks = [
   {
     id: 1,
-    name: "Projects",
+    name: "Memories",
     type: "finder",
   },
   {
     id: 3,
-    name: "Contact",
+    name: "For You",
     type: "contact",
   },
   {
     id: 4,
-    name: "Resume",
-    type: "resume",
+    name: "Letter",
+    type: "letter",
   },
 ];
 
 const navIcons = [
   {
     id: 1,
-    img: "/icons/wifi.svg",
+    icon: "wifi",
   },
   {
     id: 2,
-    img: "/icons/search.svg",
+    icon: "search",
   },
   {
     id: 3,
-    img: "/icons/user.svg",
+    icon: "user",
   },
   {
     id: 4,
-    img: "/icons/mode.svg",
+    icon: "mode",
   },
 ];
 
 const dockApps = [
   {
     id: "finder",
-    name: "Portfolio", // was "Finder"
+    name: "Finder",
     icon: "finder.png",
     canOpen: true,
   },
   {
     id: "safari",
-    name: "Articles", // was "Safari"
+    name: "Safari",
     icon: "safari.png",
     canOpen: true,
   },
   {
     id: "photos",
-    name: "Gallery", // was "Photos"
+    name: "Photos",
     icon: "photos.png",
     canOpen: true,
   },
   {
     id: "contact",
-    name: "Contact", // or "Get in touch"
+    name: "Contacts",
     icon: "contact.png",
     canOpen: true,
   },
   {
     id: "terminal",
-    name: "Skills", // was "Terminal"
+    name: "Terminal",
     icon: "terminal.png",
     canOpen: true,
   },
   {
     id: "trash",
-    name: "Archive", // was "Trash"
+    name: "Trash",
     icon: "trash.png",
     canOpen: false,
   },
 ];
 
+// "Stories" — Safari window content, told from Tessa's side
 const blogPosts = [
   {
     id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+    date: "The day we met",
+    title: "The Day We Met",
+    image: "/images/gallery/memory-04.jpg",
+    link: "#",
   },
   {
     id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-    image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    date: "A moment I keep replaying",
+    title: "A Moment I'll Never Forget",
+    image: "/images/gallery/memory-09.jpg",
+    link: "#",
   },
   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
-    image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    date: "The easiest decision I've made",
+    title: "Why I Chose You",
+    image: "/images/gallery/memory-14.jpg",
+    link: "#",
   },
 ];
 
+// "Reasons" — Terminal window content
 const techStack = [
   {
-    category: "Frontend",
-    items: ["React.js", "Next.js", "TypeScript"],
+    category: "Your Vibe",
+    items: ["That laugh", "Terrible jokes, great delivery", "Calm in chaos"],
   },
   {
-    category: "Mobile",
-    items: ["React Native", "Expo"],
+    category: "Favorite Moments",
+    items: ["Our first conversation", "Every random call", "This year, so far"],
   },
   {
-    category: "Styling",
-    items: ["Tailwind CSS", "Sass", "CSS"],
-  },
-  {
-    category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Hono"],
-  },
-  {
-    category: "Database",
-    items: ["MongoDB", "PostgreSQL"],
-  },
-  {
-    category: "Dev Tools",
-    items: ["Git", "GitHub", "Docker"],
+    category: "Reasons I'm Here",
+    items: ["You listen", "You show up", "You, just being you"],
   },
 ];
 
 const socials = [
   {
     id: 1,
-    text: "Github",
-    icon: "/icons/github.svg",
-    bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    text: "Instagram",
+    icon: "/icons/instagram.svg",
+    bg: "#e1306c",
+    link: "#", // TODO: replace with real Instagram link
   },
   {
     id: 2,
-    text: "Platform",
-    icon: "/icons/atom.svg",
-    bg: "#4bcb63",
-    link: "https://jsmastery.com/",
-  },
-  {
-    id: 3,
-    text: "Twitter/X",
-    icon: "/icons/twitter.svg",
-    bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
-  },
-  {
-    id: 4,
-    text: "LinkedIn",
-    icon: "/icons/linkedin.svg",
-    bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    text: "WhatsApp",
+    icon: "/icons/whatsapp.svg",
+    bg: "#25d366",
+    link: "#", // TODO: replace with real WhatsApp link
   },
 ];
 
+// 30 photos split across the sidebar sections instead of one giant grid —
+// every section gets its own bento pattern and photo count (see
+// BENTO_LAYOUTS in Photos.jsx). The window itself stays a fixed size no
+// matter which pattern is active, so only the composition changes.
 const photosLinks = [
   {
     id: 1,
     icon: "/icons/gicon1.svg",
     title: "Library",
+    layout: "hero",
+    photos: [4, 8, 1, 21, 22].map((n) => ({
+      id: n,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+    })),
   },
   {
     id: 2,
     icon: "/icons/gicon2.svg",
-    title: "Memories",
+    title: "Favorite Moments",
+    layout: "towers",
+    photos: [11, 20, 15, 6, 13, 18].map((n) => ({
+      id: n,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+    })),
   },
   {
     id: 3,
     icon: "/icons/file.svg",
-    title: "Places",
+    title: "This Year",
+    layout: "quad",
+    photos: [2, 9, 16, 23].map((n) => ({
+      id: n,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+    })),
   },
   {
     id: 4,
     icon: "/icons/gicon4.svg",
-    title: "People",
+    title: "With Tessa",
+    layout: "banners",
+    photos: [5, 7, 12, 14, 28, 29].map((n) => ({
+      id: n,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+    })),
   },
   {
     id: 5,
     icon: "/icons/gicon5.svg",
-    title: "Favorites",
-  },
-];
-
-const gallery = [
-  {
-    id: 1,
-    img: "/images/gal1.png",
-  },
-  {
-    id: 2,
-    img: "/images/gal2.png",
-  },
-  {
-    id: 3,
-    img: "/images/gal3.png",
-  },
-  {
-    id: 4,
-    img: "/images/gal4.png",
+    title: "Starred",
+    layout: "strip",
+    photos: [3, 10, 17, 19, 24].map((n) => ({
+      id: n,
+      img: `/images/gallery/memory-${String(n).padStart(2, "0")}.jpg`,
+    })),
   },
 ];
 
@@ -212,73 +197,92 @@ export {
   techStack,
   socials,
   photosLinks,
-  gallery,
+};
+
+// Copy that used to be hardcoded directly in JSX — centralized here so it's
+// a single edit for the client to personalize later.
+export const SITE_COPY = {
+  welcome: {
+    subtitle: "Happy birthday, my love. This is all for",
+    title: "abraham.",
+    mobileNotice:
+      "Best viewed on a laptop or tablet, so the animations feel right :)",
+  },
+  navbar: {
+    brand: "AB-509",
+  },
+  contact: {
+    avatar: "/images/gallery/memory-01.jpg",
+    heading: "For you, Abraham",
+    bio: "I know it's still early for us, but I wanted today to feel special anyway. Every little moment with you so far has been one I want to keep. Happy birthday — here's to many more.",
+    signoff: "From, Tessa",
+  },
+  terminal: {
+    prompt: "tessa@heart ~ % ",
+    installCommand: "npm install more-love-for-abraham",
+    command: "cat reasons-i-like-you.txt",
+    header: "Reasons",
+  },
+};
+
+export const LETTER_DATA = {
+  name: "letter-for-abraham.txt",
+  subtitle: "For Abraham, happy 24th birthday",
+  image: "/images/gallery/memory-02.jpg",
+  description: [
+    "Happy birthday, Abraham. I've been trying to write this for a few days now, and I still don't think I've found the right words — so I'll just say what's true.",
+    "We're still new, you and me. But somehow it already feels easy — like I don't have to try so hard to be myself around you. That's rare, and I don't take it for granted.",
+    "Today's about you, so I hope it's full of the things that make you smile. I'm grateful I get to be part of it, even this early on.",
+    "Here's to twenty-four, and to finding out what else this year has for us. Happy birthday. — Tessa",
+  ],
 };
 
 const WORK_LOCATION = {
   id: 1,
   type: "work",
-  name: "Work",
+  name: "Our Story",
   icon: "/icons/work.svg",
   kind: "folder",
   children: [
-    // ▶ Project 1
+    // ▶ Chapter 1
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "How We Started",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-5", // icon position inside Finder
-      windowPosition: "top-[5vh] left-5", // optional: Finder window position
+      position: "top-10 left-5",
+      windowPosition: "top-[5vh] left-5",
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "how-we-started.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
+          subtitle: "Chapter One",
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-            "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
+            "It didn't take much — just a conversation that went on longer than either of us expected.",
+            "No grand story yet, just the beginning of one. And honestly, that's exactly how it should be.",
+            "Some of the best chapters start quietly, and I have a feeling this is one of them.",
           ],
         },
         {
-          id: 2,
-          name: "nike.com",
-          icon: "/images/safari.png",
-          kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
-          position: "top-10 right-20",
-        },
-        {
           id: 4,
-          name: "nike.png",
+          name: "memory-01.jpg",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-1.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/figma.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
+          imageUrl: "/images/gallery/memory-05.jpg",
         },
       ],
     },
 
-    // ▶ Project 2
+    // ▶ Chapter 2
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "Favorite Moments",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -286,52 +290,34 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "favorite-moments.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
+          subtitle: "Chapter Two",
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
+            "A handful of moments already stand out — the ones I catch myself thinking back to for no particular reason.",
+            "Nothing dramatic, just good. Which might be the best kind of memory to make.",
+            "I'm keeping a running list, and it's only getting longer.",
           ],
         },
         {
-          id: 2,
-          name: "ai-resume-analyzer.com",
-          icon: "/images/safari.png",
-          kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
-          position: "top-20 left-20",
-        },
-        {
           id: 4,
-          name: "ai-resume-analyzer.png",
+          name: "memory-02.jpg",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 left-80",
-          imageUrl: "/images/project-2.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/figma.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 left-5",
+          imageUrl: "/images/gallery/memory-10.jpg",
         },
       ],
     },
 
-    // ▶ Project 3
+    // ▶ Chapter 3
     {
       id: 7,
-      name: "Food Delivery App",
+      name: "For Today",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -339,44 +325,26 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Food Delivery App Project.txt",
+          name: "for-today.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
+          subtitle: "Chapter Three",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
+            "Twenty-four looks good on you already.",
+            "I hope today is full of easy laughs and nothing to worry about — just a good day, start to finish.",
+            "Happy birthday, Abraham. Here's to the year ahead.",
           ],
         },
         {
-          id: 2,
-          name: "food-delivery-app.com",
-          icon: "/images/safari.png",
-          kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
-          position: "top-10 right-20",
-        },
-        {
           id: 4,
-          name: "food-delivery-app.png",
+          name: "memory-03.jpg",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-3.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/figma.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
+          imageUrl: "/images/gallery/memory-15.jpg",
         },
       ],
     },
@@ -386,71 +354,45 @@ const WORK_LOCATION = {
 const ABOUT_LOCATION = {
   id: 2,
   type: "about",
-  name: "About me",
+  name: "For Abraham",
   icon: "/icons/info.svg",
   kind: "folder",
   children: [
     {
       id: 1,
-      name: "me.png",
+      name: "memory-a.jpg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/gallery/memory-06.jpg",
     },
     {
       id: 2,
-      name: "casual-me.png",
+      name: "memory-b.jpg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/gallery/memory-11.jpg",
     },
     {
       id: 3,
-      name: "conference-me.png",
+      name: "memory-c.jpg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/gallery/memory-16.jpg",
     },
     {
       id: 4,
-      name: "about-me.txt",
+      name: LETTER_DATA.name,
       icon: "/images/txt.png",
       kind: "file",
       fileType: "txt",
       position: "top-60 left-5",
-      subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
-      description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
-      ],
-    },
-  ],
-};
-
-const RESUME_LOCATION = {
-  id: 3,
-  type: "resume",
-  name: "Resume",
-  icon: "/icons/file.svg",
-  kind: "folder",
-  children: [
-    {
-      id: 1,
-      name: "Resume.pdf",
-      icon: "/images/pdf.png",
-      kind: "file",
-      fileType: "pdf",
-      // you can add `href` if you want to open a hosted resume
-      // href: "/your/resume/path.pdf",
+      ...LETTER_DATA,
     },
   ],
 };
@@ -464,21 +406,21 @@ const TRASH_LOCATION = {
   children: [
     {
       id: 1,
-      name: "trash1.png",
+      name: "memory-x.jpg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-10 left-10",
-      imageUrl: "/images/trash-1.png",
+      imageUrl: "/images/gallery/memory-20.jpg",
     },
     {
       id: 2,
-      name: "trash2.png",
+      name: "memory-y.jpg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-40 left-80",
-      imageUrl: "/images/trash-2.png",
+      imageUrl: "/images/gallery/memory-25.jpg",
     },
   ],
 };
@@ -486,7 +428,6 @@ const TRASH_LOCATION = {
 export const locations = {
   work: WORK_LOCATION,
   about: ABOUT_LOCATION,
-  resume: RESUME_LOCATION,
   trash: TRASH_LOCATION,
 };
 

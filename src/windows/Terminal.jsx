@@ -1,54 +1,73 @@
 import React from "react";
 import WindowWrapper from "@hoc/WindowWrapper.jsx";
-import { techStack } from "@constants/index.js";
-import { Check, Flag } from "lucide-react";
+import { techStack, SITE_COPY } from "@constants/index.js";
 import { WindowControls } from "@components";
+import {
+  TerminalSequence,
+  TypingAnimation,
+  AnimatedSpan,
+  TerminalProgressBar,
+} from "@components/ui/terminal.jsx";
+
+const INSTALL_LOG = [
+  "npm WARN resolving heart-dependencies@latest",
+  "+ affection@∞.0.0",
+  "+ patience@2.4.0",
+  "+ inside-jokes@1.0.0",
+];
 
 const Terminal = () => {
   return (
     <>
       <div id="window-header">
         <WindowControls target="terminal" />
-        <h2>Tech Stack</h2>
+        <h2>{SITE_COPY.terminal.header}</h2>
       </div>
 
-      <div className="techstack">
-        <p>
-          <span className="font-bold">@tnkuseija % </span>
-          show tech stack
-        </p>
+      <TerminalSequence className="techstack">
+        <TypingAnimation as="p" className="prompt-line">
+          {`${SITE_COPY.terminal.prompt}${SITE_COPY.terminal.installCommand}`}
+        </TypingAnimation>
 
-        <div className="label">
-          <p className="w-32">Category</p>
-          <p>Technologies</p>
-        </div>
+        {INSTALL_LOG.map((line) => (
+          <AnimatedSpan key={line} className="install-line">
+            {line}
+          </AnimatedSpan>
+        ))}
 
-        <ul className="content">
-          {techStack.map(({ category, items }) => (
-            <li key={category} className="flex item-center">
-              <Check className="check" size={20} />
-              <h3>{category}</h3>
-              <ul>
-                {items.map((item, i) => (
-                  <li key={i}>
-                    {item} {i < items.length - 1 ? "," : ""}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
+        <TerminalProgressBar
+          label="Downloading love for Abraham"
+          duration={1800}
+          className="progress-line"
+        />
 
-        <div className="footnote">
-          <p>
-            <Check size={20} />5 of 5 stacks loaded successfully (100%)
-          </p>
-          <p className="text-black">
-            <Flag size={15} fill="black" />
-            Render Time: 6ms
-          </p>
-        </div>
-      </div>
+        <AnimatedSpan className="install-success">
+          added 3 reasons, 9 details, and 1 heart in 1.8s ♥︎
+        </AnimatedSpan>
+        <AnimatedSpan className="install-success">
+          found 0 bugs, 0 vulnerabilities — just you ♡
+        </AnimatedSpan>
+
+        <TypingAnimation as="p" className="prompt-line">
+          {`${SITE_COPY.terminal.prompt}${SITE_COPY.terminal.command}`}
+        </TypingAnimation>
+
+        {techStack.map(({ category, items }) => (
+          <AnimatedSpan key={category} className="reason-block">
+            <p className="category">{`# ${category}`}</p>
+            {items.map((item) => (
+              <p key={item}>{`- ${item}`}</p>
+            ))}
+          </AnimatedSpan>
+        ))}
+
+        <AnimatedSpan className="footnote-line">
+          {`✓ ${techStack.length} of ${techStack.length} loaded successfully (100%) ♥︎`}
+        </AnimatedSpan>
+        <AnimatedSpan className="signoff-line">
+          Made with ♡ by Tessa
+        </AnimatedSpan>
+      </TerminalSequence>
     </>
   );
 };
