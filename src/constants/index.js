@@ -164,7 +164,22 @@ const photosLinks = [
   },
 ];
 
-export { navLinks, navIcons, dockApps, techStack, socials, photosLinks };
+const waContacts = [
+  { id: 1, name: "Abraham", active: true, color: "#128C7E" },
+  { id: 2, name: "Arief Hebat", color: "#e17055" },
+  { id: 3, name: "Nata Pikun", color: "#6c5ce7" },
+  { id: 4, name: "Indah Gaming", color: "#0984e3" },
+];
+
+export {
+  navLinks,
+  navIcons,
+  dockApps,
+  techStack,
+  socials,
+  photosLinks,
+  waContacts,
+};
 
 // Copy that used to be hardcoded directly in JSX — centralized here so it's
 // a single edit for the client to personalize later.
@@ -179,7 +194,7 @@ export const SITE_COPY = {
     brand: "AB-509",
   },
   contact: {
-    avatar: "/images/gallery/memory-01.webp",
+    avatar: "/images/gallery/memory-02.webp",
     heading: "For you, Abraham",
     bio: "I know it's still early for us, but I wanted today to feel special anyway. Every little moment with you so far has been one I want to keep. Happy birthday — here's to many more.",
     signoff: "From, Tessa",
@@ -188,7 +203,7 @@ export const SITE_COPY = {
     prompt: "tessa@heart ~ % ",
     installCommand: "npm install more-love-for-abraham",
     command: "cat reasons-i-like-you.txt",
-    header: "Reasons",
+    header: "Terminal",
   },
 };
 
