@@ -30,6 +30,14 @@ const useWindowStore = create(
         if (!win) return;
         win.zIndex = state.nextZIndex++;
       }),
+    closeAllWindows: () =>
+      set((state) => {
+        Object.values(state.windows).forEach((win) => {
+          win.isOpen = false;
+          win.zIndex = INITIAL_Z_INDEX;
+          win.data = null;
+        });
+      }),
   })),
 );
 

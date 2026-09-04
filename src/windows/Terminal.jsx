@@ -36,7 +36,7 @@ const Terminal = () => {
         ))}
 
         <TerminalProgressBar
-          label="Downloading love for Abraham"
+          label={SITE_COPY.terminal.downloadLabel}
           duration={1800}
           className="progress-line"
         />
@@ -65,7 +65,7 @@ const Terminal = () => {
           {`✓ ${techStack.length} of ${techStack.length} loaded successfully (100%) ♥︎`}
         </AnimatedSpan>
         <AnimatedSpan className="signoff-line">
-          Made with ♡ by Tessa
+          {SITE_COPY.terminal.signoff}
         </AnimatedSpan>
       </TerminalSequence>
     </>

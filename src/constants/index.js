@@ -67,6 +67,12 @@ const dockApps = [
     canOpen: true,
   },
   {
+    id: "spotify",
+    name: "Spotify",
+    icon: "spotify.png",
+    canOpen: true,
+  },
+  {
     id: "trash",
     name: "Trash",
     icon: "trash.png",
@@ -204,7 +210,69 @@ export const SITE_COPY = {
     installCommand: "npm install more-love-for-abraham",
     command: "cat reasons-i-like-you.txt",
     header: "Terminal",
+    downloadLabel: "Downloading love for Abraham",
+    signoff: "Made with ♡ by Tessa",
   },
+};
+
+export const SPOTIFY_DATA = {
+  playlist: {
+    title: "For Abraham",
+    owner: "Tessa",
+    description: "Songs older than your phone. Just the way you like it.",
+    cover: "/images/gallery/memory-09.webp",
+  },
+  tracks: [
+    {
+      title: "Can't Help Falling in Love",
+      artist: "Elvis Presley",
+      album: "Blue Hawaii",
+      duration: "3:00",
+      cover: "/images/gallery/memory-01.webp",
+    },
+    {
+      title: "At Last",
+      artist: "Etta James",
+      album: "At Last!",
+      duration: "3:01",
+      cover: "/images/gallery/memory-04.webp",
+    },
+    {
+      title: "Fly Me to the Moon",
+      artist: "Frank Sinatra",
+      album: "It Might as Well Be Swing",
+      duration: "2:28",
+      cover: "/images/gallery/memory-07.webp",
+    },
+    {
+      title: "Something",
+      artist: "The Beatles",
+      album: "Abbey Road",
+      duration: "3:03",
+      cover: "/images/gallery/memory-11.webp",
+    },
+    {
+      title: "Just the Way You Are",
+      artist: "Billy Joel",
+      album: "The Stranger",
+      duration: "4:50",
+      cover: "/images/gallery/memory-14.webp",
+    },
+    {
+      title: "Endless Love",
+      artist: "Diana Ross & Lionel Richie",
+      album: "Endless Love",
+      duration: "4:29",
+      cover: "/images/gallery/memory-18.webp",
+    },
+  ],
+};
+
+export const LOCK_DATA = {
+  name: "Abraham",
+  avatar: "/images/gallery/memory-06.webp",
+  password: "13092002",
+  hint: "Hint: your birth date (DDMMYYYY)",
 };
 
 export const LETTER_DATA = {
@@ -217,6 +285,127 @@ export const LETTER_DATA = {
     "Today's about you, so I hope it's full of the things that make you smile. I'm grateful I get to be part of it, even this early on.",
     "Here's to twenty-four, and to finding out what else this year has for us. Happy birthday. — Tessa",
   ],
+};
+
+// Safari window content — Wikipedia-style article rendered from data.
+// Paragraphs are arrays of parts so inline formatting (sup refs, links,
+// italics) can still be expressed without hardcoding JSX in the window.
+export const WIKI_DATA = {
+  url: "en.wikipedia.org/wiki/Abraham_(2026)",
+  title: "Abraham",
+  subtitle: "From Wikipedia, the free encyclopedia",
+  toc: ["Early life", "Personal life", "In popular culture", "References"],
+  sections: [
+    {
+      heading: "Early life",
+      paragraphs: [
+        [
+          {
+            text: "Abraham Sidabukke was born on 13 September 2002 as the first child of the Sidabukke family. Since the beginning, his presence brought joy, warmth, and a new kind of happiness into his small family.",
+          },
+        ],
+        [
+          {
+            text: "Growing up, Abraham developed into someone known for his confidence, determination, and hardworking nature. He is not someone who easily gives up; once he has something in mind, he tends to keep moving forward, even when things become difficult. Behind that strong personality, however, is also someone playful, mischievous, and surprisingly understanding toward the people he cares about.",
+          },
+          { sup: 1 },
+        ],
+        [
+          {
+            text: "His personality may sometimes appear calm, cold, or indifferent at first glance. But those who know him closely understand that his mischievous side is practically part of his DNA. Somewhere between his serious expression and his tendency to act cool, there is always an opportunity for Abraham to be annoying—in the most lovable way possible.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Personal life",
+      paragraphs: [
+        [
+          {
+            text: "Abraham is known for his love of songs that are, according to certain people, a little too old for his generation. His playlist may occasionally sound like it belongs to another era, but perhaps that is part of his charm.",
+          },
+          { sup: 2 },
+        ],
+        [
+          {
+            text: "He is also someone who can be very hard on himself and tends to overthink even the smallest things. Sometimes, his mind travels much further than the situation actually requires. Yet despite being strict with himself and carrying his own worries quietly, Abraham always tries to be present for the people he loves—especially his family and his partner.",
+          },
+        ],
+        [
+          {
+            text: "Behind his seemingly cold and indifferent personality is someone who genuinely cares. He may not always express everything in the sweetest or most obvious way, but his presence, effort, and concern speak for him.",
+          },
+        ],
+        [
+          {
+            text: "As of 2026, Abraham has also become the partner and one of the people filling Tessa's everyday life. Their relationship may still be new, but somehow, being together has already felt easy and natural. In a relatively short time, they have shared many stories, learned more about each other, and slowly built something deeper than either of them may have expected.",
+          },
+          { sup: 4 },
+        ],
+        [
+          {
+            text: "From 2026 to infinity, there are still many pages waiting to be written.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "In popular culture",
+      paragraphs: [
+        [
+          {
+            text: "Among the people closest to him, Abraham is perhaps best known as a combination of contradictions.",
+          },
+        ],
+        [
+          {
+            text: "He can appear cold, yet cares deeply. He can act indifferent, yet remembers more than people expect. He is confident, but can still overthink the smallest details. He may be hard on himself, but he remains understanding toward others. And despite looking calm and serious, his tendency to be incredibly mischievous is something that cannot—and probably should not—be separated from his identity.",
+          },
+        ],
+        [
+          {
+            text: "In his own small universe, Abraham is also recognized as a man with big dreams. He carries ambitions and hopes that are greater than his current circumstances, and therefore, his courage and determination must continue to grow with them.",
+          },
+        ],
+        [
+          {
+            text: "As a Batak man, Abraham carries a strong sense of dignity and self-respect. Yet strength, for him, should never mean looking down on others. It should also mean knowing how to respect, protect, and appreciate the people around him—especially women.",
+          },
+        ],
+        [{ text: "His dreams are big." }],
+        [{ text: "So his spirit must be even bigger." }],
+        [{ text: "His efforts must be stronger." }],
+        [
+          {
+            text: "And if there is something he truly wants, perhaps his prayers should be asked for a little louder, too.",
+          },
+          { sup: 3 },
+        ],
+        [
+          {
+            text: "Because Abraham is meant to keep growing, keep trying, and keep believing that the life he dreams about is possible.",
+          },
+        ],
+      ],
+    },
+  ],
+  references: [
+    "Tessa (2026) Personal observations. On Abraham's confidence, hardworking nature, refusal to give up, and excessive levels of mischievous behavior.",
+    "Abraham's Music Library. (Undated). A collection of songs that may have been released before his time.",
+    "God. (Ongoing). Unpublished records regarding Abraham's prayers, dreams, future, and everything he is still becoming.",
+    "Abraham & Tessa. (2026–∞). An ongoing story. Currently still being written.",
+  ],
+  infobox: {
+    title: "Abraham",
+    image: "/images/gallery/memory-06.webp",
+    rows: [
+      { label: "Born", value: "13 September 2002" },
+      { label: "Ethnicity", value: "Batak" },
+      { label: "Known for", value: "Confidence, mischief, big dreams" },
+      { label: "Partner", value: "Tessa (2026–present)" },
+      { label: "Notable work", value: "Overthinking, then showing up anyway" },
+    ],
+  },
 };
 
 const WORK_LOCATION = {
@@ -244,9 +433,15 @@ const WORK_LOCATION = {
           position: "top-5 left-10",
           subtitle: "Chapter One",
           description: [
-            "It didn't take much — just a conversation that went on longer than either of us expected.",
-            "No grand story yet, just the beginning of one. And honestly, that's exactly how it should be.",
-            "Some of the best chapters start quietly, and I have a feeling this is one of them.",
+            "Our story didn't take much time to begin. It started with just a conversation—one that somehow went on longer than either of us expected. And honestly, from the very beginning, I already had a feeling that somehow, we were going to be something. Because if there is one thing about me, it's that I always notice the signals first. So yes... maybe I knew before you did. Xixixi.",
+            "In the beginning, there were many doubts and question marks. We were both still figuring things out, slowly learning each other and introducing one another to our own little worlds. You came with your past and the hardness the world had taught you, while I came with my imperfections, wounds, and things I was still learning to heal from. We both had our own stories, scars, and ways of protecting ourselves—but somehow, we still found our way to each other.",
+            "Slowly, I started seeing the person behind everything you had built around yourself. Someone willing to learn, listen, understand, and accept. You treated me kindly, welcomed me warmly, and somehow understood my situation even when I didn't know how to explain it. And for someone who comes with too many thoughts and worries, being understood without having to say everything means more than you probably realize.",
+            "And perhaps one of the things that makes me happiest is that this is my first time being with a Batak man. Ah! I can't even explain how happy and proud that makes me. Being able to go to church with you, worship together, pray before eating and before sleeping—it feels different. It feels special. There is something beautiful about having someone beside you while we bring our hopes, worries, dreams, and prayers to God.",
+            "Thank you for introducing me to Bou, Amang Boru, and your family, and for letting me become a small part of your world.",
+            "Our relationship may still be new, but somehow, it doesn't feel unfamiliar. It feels easy. It feels warm. It feels like we've already shared so much. And maybe that's the beauty of it—we don't have to rush. There are still so many stories to tell, places to see, and versions of ourselves we haven't met yet.",
+            "Maybe this is only Chapter I. And honestly? That's exactly how it should be. Because there are still so many chapters waiting for us.",
+            "It all started with one conversation that lasted longer than either of us expected.",
+            "And somehow, that conversation became us.",
           ],
         },
         {
@@ -279,9 +474,15 @@ const WORK_LOCATION = {
           position: "top-5 right-10",
           subtitle: "Chapter Two",
           description: [
-            "A handful of moments already stand out — the ones I catch myself thinking back to for no particular reason.",
-            "Nothing dramatic, just good. Which might be the best kind of memory to make.",
-            "I'm keeping a running list, and it's only getting longer.",
+            "There are so many little moments with you that I love—the endless conversations, silly jokes, random teasing, our little routines, worshipping together, and all the moments when your jail side comes out. But one memory will always have a very special place in my heart.",
+            "When Papah passed away, you were there.",
+            "You came all the way to Bekasi, not only for me, but for my family too. And one day, while looking through my gallery, I found a video of you helping carry Papah's coffin. I watched it and my heart felt so warm. I was holding back tears, feeling incredibly grateful and proud at the same time.",
+            "You didn't have to do any of that. You simply chose to be there.",
+            'Thank you for being the last man I introduced to Papah, for meeting him twice during the final moments of his life, and for giving him the chance to know you. Thank you for treating my family with kindness, for becoming comfortable with my extended family, and for letting me proudly say, "This is my Abraham."',
+            "Maybe that's why this is one of my favorite memories. Not because it was a happy moment, but because it showed me who you were when things weren't.",
+            "You stayed. You showed up. You cared.",
+            "And in one of the hardest chapters of my life, you became one of the people who made it a little easier to carry.",
+            "Some moments become memories. Some memories become proof. And this one became proof that I am lucky to have you.",
           ],
         },
         {
@@ -312,11 +513,25 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
-          subtitle: "Chapter Three",
+          subtitle: "Chapter Three: Happy Birthday, My Love 🤍",
           description: [
-            "Twenty-four looks good on you already.",
-            "I hope today is full of easy laughs and nothing to worry about — just a good day, start to finish.",
-            "Happy birthday, Abraham. Here's to the year ahead.",
+            "Today is your day.",
+            "And I just want to take this moment to say thank you.",
+            "Thank you for coming into my life.",
+            "Thank you for being my rainbow after the storm.",
+            "Thank you for welcoming me warmly with all my wounds and shortcomings.",
+            "Thank you for proving to me that there are men who can take responsibility. Men who can be gentlemen. Men who know how to treat a woman well.",
+            "Thank you for being there and filling my days.",
+            "Thank you for listening to every single story—from my happiest moments to all my complaints, worries, and endless little thoughts. Thank you for still prioritizing me during your busy days.",
+            "Thank you for every act of attention. Thank you for every effort. Thank you for every amount of money you have spent. And thank you for every second of your time that you have given to me.",
+            "None of those things are invisible to me. I see them. I appreciate them. And I will always remember them.",
+            "Thank you for being my shoulder to lean on every time things were getting bad. Thank you for becoming someone I can come home to.",
+            "On your birthday, I pray that you are always given good health, a long and beautiful life, and a heart that remains strong through everything. I hope more good things continue to find their way to you, God's blessings overflow in every part of your life, and every prayer you have whispered slowly finds its answer. I hope you continue getting closer to the dreams you have been working for, that your path becomes clearer, your heart grows stronger, and your faith becomes deeper.",
+            "You have big dreams, Abraham, so your spirit has to be even bigger, your courage stronger, and your efforts greater. And when there is something you truly want, perhaps you should ask God a little louder too, because I believe there are still so many beautiful things waiting for you. I hope you become more comfortable expressing what you feel and think, learn to be kinder to yourself, and, of course, develop an even bigger patience when dealing with me. XOXOXO.",
+            "But most importantly, please remember this:",
+            "You don't have to become everything overnight, and you don't have to figure everything out all at once. Keep growing, keep trying, keep praying, and keep dreaming. I'll always be proud of you—not only for your biggest achievements, but also for the smallest wins, the easiest goals, the little progress that nobody else notices, and all the things you are quietly working on for your future. I will always be one of the people cheering for you. So cheers to another year of your life, to every blessing that is coming, to every dream you will achieve, and to every challenge that will only make you stronger. I hope this new age brings you closer to the life you have always dreamed about, and somewhere along the way, I hope I still get to be beside you. Let's achieve more things, go to more places, create more memories, and grow together. And one day, let's look back at all of this and realize just how far we have come.",
+            "Happy Birthday, sayang. Thank you for being you, for coming into my life, and for becoming such a beautiful part of my story. I love you more than everything in this world. Whatever the future looks like, I hope we keep choosing each other. Let's chase our dreams together, achieve things together, grow together, and if the world feels too big to conquer alone—let's take it on together.",
+            "Cheers for 24! Now, let's conquer the world. 🤍",
           ],
         },
         {
@@ -422,6 +637,7 @@ const WINDOW_CONFIG = {
   safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  spotify: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };

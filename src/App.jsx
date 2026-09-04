@@ -2,7 +2,7 @@ import React from "react";
 import { Draggable } from "gsap/Draggable";
 import gsap from "gsap";
 
-import { Dock, Home, Navbar, Welcome } from "@components";
+import { Dock, Home, LockScreen, Navbar, PowerScreen, Welcome } from "@components";
 import {
   Finder,
   Image,
@@ -12,6 +12,7 @@ import {
   Text,
   Contact,
   Photos,
+  Spotify,
 } from "@windows";
 
 gsap.registerPlugin(Draggable);
@@ -19,6 +20,9 @@ gsap.registerPlugin(Draggable);
 const App = () => {
   return (
     <main>
+      <PowerScreen />
+      <LockScreen />
+
       <Navbar />
       <Welcome />
       <Dock />
@@ -32,6 +36,7 @@ const App = () => {
       <Finder />
       <Contact />
       <Photos />
+      <Spotify />
     </main>
   );
 };

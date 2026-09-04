@@ -22,6 +22,15 @@ body {
   color: #f3f4f6;
 }
 
+@keyframes power-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @theme {
   --font-georama: "Georama", sans-serif;
   --font-roboto: "Roboto Mono", monospace;
@@ -46,7 +55,7 @@ body {
   }
 
   nav {
-    @apply flex justify-between items-center bg-white/50 dark:bg-neutral-900/50 backdrop-blur-3xl p-2 px-5 select-none transition-colors;
+    @apply relative z-50 flex justify-between items-center bg-white/50 dark:bg-neutral-900/50 backdrop-blur-3xl p-2 px-5 select-none transition-colors;
 
     p {
       @apply dark:text-gray-100;
@@ -58,6 +67,22 @@ body {
 
     .apple-logo {
       @apply dark:invert transition-[filter];
+    }
+
+    .apple-menu {
+      @apply relative;
+
+      .apple-menu-dropdown {
+        @apply absolute top-full left-0 mt-3 w-56 flex flex-col items-stretch gap-0.5 bg-white/70 dark:bg-neutral-800/80 backdrop-blur-2xl rounded-lg shadow-2xl p-1.5 text-black dark:text-gray-100;
+
+        li {
+          @apply px-3 py-1.5 rounded-md text-sm cursor-pointer hover:bg-blue-500 hover:text-white transition-colors;
+
+          &.divider {
+            @apply my-1 h-px p-0 bg-gray-300 dark:bg-neutral-600 pointer-events-none;
+          }
+        }
+      }
     }
 
     div {
@@ -85,6 +110,60 @@ body {
 @layer components {
   .icon {
     @apply p-1 hover:bg-gray-200 dark:hover:bg-neutral-700 rounded hover:cursor-default;
+  }
+
+  #power-screen {
+    @apply fixed inset-0 z-[10000] flex items-center justify-center bg-black text-white/70 text-sm select-none;
+    animation: power-fade-in 0.6s ease-out;
+
+    .power-hint {
+      @apply text-white/30 text-xs cursor-pointer;
+    }
+  }
+
+  #lock-screen {
+    @apply fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-2xl;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+      url("/images/wallpaper.webp");
+    background-size: cover;
+    background-position: center;
+
+    .lock-card {
+      @apply flex flex-col items-center gap-3 select-none;
+    }
+
+    .lock-avatar {
+      @apply size-24 rounded-full object-cover shadow-2xl ring-4 ring-white/20;
+    }
+
+    .lock-name {
+      @apply text-white text-xl font-medium drop-shadow;
+    }
+
+    .lock-form {
+      @apply mt-2 flex items-center gap-2 bg-white/30 border border-white/40 shadow-lg rounded-full px-4 py-2 backdrop-blur-[30px] backdrop-saturate-150;
+
+      .lock-icon {
+        @apply text-white/70;
+      }
+
+      input {
+        @apply bg-transparent outline-none text-white placeholder:text-white/60 w-44 text-sm;
+      }
+
+      input.error {
+        @apply placeholder:text-red-300;
+      }
+
+      button {
+        @apply text-white/80 hover:text-white transition-colors cursor-pointer;
+      }
+    }
+
+    .lock-hint {
+      @apply text-white/60 text-xs mt-2;
+    }
   }
 
   #welcome {
@@ -551,6 +630,207 @@ body {
 
       &.gallery-bento ul {
         @apply grid-flow-row-dense auto-rows-[180px];
+      }
+    }
+  }
+
+  #spotify {
+    @apply w-4xl absolute top-24 left-1/4 bg-[#121212] text-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+
+    #window-header {
+      @apply bg-[#121212] border-b border-white/10;
+    }
+
+    .spotify-body {
+      @apply flex h-[440px];
+
+      .spotify-sidebar {
+        @apply w-1/4 flex-none bg-black p-4 flex flex-col gap-6 border-r border-white/10;
+
+        .spotify-nav {
+          @apply flex flex-col gap-3;
+
+          span {
+            @apply flex items-center gap-3 text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors;
+          }
+        }
+
+        .spotify-playlist-link {
+          @apply flex items-center gap-3 p-2 rounded-md cursor-pointer transition-colors;
+
+          &.active {
+            @apply bg-white/10;
+          }
+
+          img {
+            @apply size-10 rounded object-cover flex-none;
+          }
+
+          .spotify-playlist-name {
+            @apply text-sm font-medium truncate;
+          }
+
+          .spotify-playlist-owner {
+            @apply text-xs text-gray-400;
+          }
+        }
+      }
+
+      .spotify-main {
+        @apply flex-1 overflow-y-auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .spotify-playlist-header {
+          @apply flex items-end gap-5 p-6;
+          background: linear-gradient(to bottom, #3a3a3a, #121212);
+
+          .spotify-cover {
+            @apply size-36 object-cover rounded shadow-xl flex-none;
+          }
+
+          .spotify-kicker {
+            @apply text-xs font-semibold uppercase tracking-wide;
+          }
+
+          h1 {
+            @apply text-4xl font-bold my-2;
+          }
+
+          .spotify-description {
+            @apply text-sm text-gray-300;
+          }
+
+          .spotify-meta {
+            @apply text-xs text-gray-400 mt-2;
+          }
+        }
+
+        .spotify-tracklist {
+          @apply w-full text-left border-collapse table-fixed;
+
+          thead th {
+            @apply text-xs font-medium text-gray-400 uppercase border-b border-white/10 px-4 py-2;
+
+            &:nth-child(1) {
+              @apply w-10;
+            }
+
+            &:nth-child(2) {
+              @apply w-1/2;
+            }
+
+            &:nth-child(3) {
+              @apply w-1/3;
+            }
+
+            &:nth-child(4) {
+              @apply w-16;
+            }
+          }
+
+          tbody tr {
+            @apply cursor-pointer hover:bg-white/5 transition-colors;
+
+            &.active {
+              .spotify-track-name {
+                @apply text-[#1db954];
+              }
+            }
+
+            td {
+              @apply px-4 py-2 text-sm text-gray-300 align-middle;
+            }
+          }
+
+          .spotify-track-number {
+            @apply flex items-center justify-center size-4 text-sm text-gray-400;
+          }
+
+          .spotify-track-title {
+            @apply flex items-center gap-3;
+
+            img {
+              @apply size-10 rounded object-cover flex-none;
+            }
+          }
+
+          .spotify-track-name {
+            @apply text-sm font-medium text-white truncate;
+          }
+
+          .spotify-track-artist {
+            @apply text-xs text-gray-400 truncate;
+          }
+        }
+      }
+    }
+
+    .spotify-now-playing {
+      @apply flex items-center justify-between gap-6 px-4 py-3 bg-[#181818] border-t border-white/10;
+
+      .spotify-now-track {
+        @apply flex items-center gap-3 w-1/4 min-w-0;
+
+        img {
+          @apply size-14 rounded object-cover flex-none;
+        }
+
+        .spotify-track-name {
+          @apply text-[13px] font-normal;
+        }
+
+        .spotify-track-artist {
+          @apply text-[11px] text-gray-400;
+        }
+
+        .spotify-heart {
+          @apply text-gray-400 hover:text-[#1db954] cursor-pointer flex-none;
+        }
+      }
+
+      .spotify-now-controls {
+        @apply flex flex-col items-center gap-1.5 flex-1 max-w-md;
+
+        .spotify-now-buttons {
+          @apply flex items-center gap-4 text-gray-300;
+
+          > svg {
+            @apply cursor-pointer hover:text-white transition-colors;
+          }
+        }
+
+        .spotify-play-btn {
+          @apply size-7 rounded-full bg-white text-black flex-center cursor-pointer hover:scale-105 transition-transform;
+        }
+
+        .spotify-progress {
+          @apply flex items-center gap-2 w-full text-[11px] text-gray-400;
+
+          .spotify-progress-bar {
+            @apply flex-1 h-1 rounded-full bg-white/20 overflow-hidden;
+
+            .spotify-progress-fill {
+              @apply h-full w-[35%] bg-white rounded-full;
+            }
+          }
+        }
+      }
+
+      .spotify-volume {
+        @apply flex items-center gap-2 w-1/4 justify-end text-gray-300;
+
+        .spotify-progress-bar {
+          @apply w-24 h-1 rounded-full bg-white/20 overflow-hidden;
+
+          .spotify-progress-fill {
+            @apply h-full bg-white rounded-full;
+          }
+        }
       }
     }
   }

@@ -1,8 +1,10 @@
+import { useEffect, useRef, useState } from "react";
 import dayjs from "dayjs";
 import { Sun, Moon, Wifi, Search, User } from "lucide-react";
 import { useViteTheme } from "@space-man/react-theme-animation";
-import { navIcons, navLinks, SITE_COPY, LETTER_DATA } from "@constants";
+import { navIcons, navLinks, SITE_COPY, LETTER_DATA, LOCK_DATA } from "@constants";
 import useWindowStore from "@store/window.js";
+import useLockStore from "@store/lock.js";
 
 const NAV_ICON_MAP = {
   wifi: { Icon: Wifi, size: 16 },
@@ -27,12 +29,58 @@ const ModeToggle = () => {
   );
 };
 
+const AppleMenu = () => {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
+  const { closeAllWindows } = useWindowStore();
+  const { lock, restart, shutDown } = useLockStore();
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
+  const runAction = (action) => () => {
+    setOpen(false);
+    closeAllWindows();
+    action();
+  };
+
+  return (
+    <div className="apple-menu" ref={menuRef}>
+      <img
+        src="/images/logo.svg"
+        alt="logo"
+        className="apple-logo cursor-pointer"
+        onClick={() => setOpen((prev) => !prev)}
+      />
+
+      {open && (
+        <ul className="apple-menu-dropdown">
+          <li onClick={runAction(lock)}>Lock Screen</li>
+          <li onClick={runAction(restart)}>Restart...</li>
+          <li onClick={runAction(shutDown)}>Shut Down...</li>
+          <li className="divider" />
+          <li onClick={runAction(lock)}>Log Out {LOCK_DATA.name}...</li>
+        </ul>
+      )}
+    </div>
+  );
+};
+
 const Navbar = () => {
   const { openWindow } = useWindowStore();
   return (
     <nav>
       <div>
-        <img src="/images/logo.svg" alt="logo" className="apple-logo" />
+        <AppleMenu />
         <p className="font-bold">{SITE_COPY.navbar.brand}</p>
 
         <ul>

@@ -13,7 +13,7 @@ import {
   Smile,
 } from "lucide-react";
 import WindowWrapper from "@hoc/WindowWrapper.jsx";
-import { socials, waContacts, SITE_COPY } from "@constants/index.js";
+import { socials, waContacts, SITE_COPY, LOCK_DATA } from "@constants/index.js";
 import { WindowControls } from "@components/index.js";
 
 const initials = (name) =>
@@ -85,11 +85,11 @@ const Contact = () => {
           <div className="wa-chat-header">
             <img
               src={SITE_COPY.contact.avatar}
-              alt="Abraham"
+              alt={LOCK_DATA.name}
               className="wa-avatar"
             />
             <div className="min-w-0">
-              <h3>Abraham</h3>
+              <h3>{LOCK_DATA.name}</h3>
               <p className="wa-status">online</p>
             </div>
 

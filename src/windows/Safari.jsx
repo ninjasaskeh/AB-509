@@ -1,6 +1,7 @@
 import React from "react";
 import { WindowControls } from "@components";
 import WindowWrapper from "@hoc/WindowWrapper.jsx";
+import { WIKI_DATA } from "@constants";
 import {
   ChevronLeft,
   ChevronRight,
@@ -11,6 +12,20 @@ import {
   Share,
   ShieldHalf,
 } from "lucide-react";
+
+const renderParts = (parts) =>
+  parts.map((part, i) => {
+    if (part.sup) return <sup key={i}>[{part.sup}]</sup>;
+    if (part.link)
+      return (
+        <a key={i} href={part.link.href}>
+          {part.link.text}
+        </a>
+      );
+    if (part.em) return <em key={i}>{part.em}</em>;
+    if (part.bold) return <strong key={i}>{part.text}</strong>;
+    return part.text;
+  });
 
 const Safari = () => {
   return (
@@ -33,7 +48,7 @@ const Safari = () => {
             <input
               type="text"
               readOnly
-              value="en.wikipedia.org/wiki/Abraham_(2026)"
+              value={WIKI_DATA.url}
               className="flex-1"
             />
           </div>
@@ -54,92 +69,46 @@ const Safari = () => {
 
         <div className="wiki-body">
           <article className="wiki-article">
-            <h1>Abraham</h1>
-            <p className="wiki-subtitle">From Wikipedia, the free encyclopedia</p>
+            <h1>{WIKI_DATA.title}</h1>
+            <p className="wiki-subtitle">{WIKI_DATA.subtitle}</p>
 
             <div className="wiki-toc">
               <p className="toc-title">Contents</p>
               <ol>
-                <li>Early life</li>
-                <li>Personal life</li>
-                <li>In popular culture</li>
-                <li>References</li>
+                {WIKI_DATA.toc.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ol>
             </div>
 
-            <p>
-              <strong>Abraham</strong> (born September 5) is best known for his
-              effortless charm, a talent for terrible jokes delivered with
-              suspicious confidence, and an uncanny ability to make an
-              ordinary Tuesday feel like an occasion.<sup>[1]</sup> As of
-              2026, he is widely regarded — by a sample size of one very
-              biased source — as easy to be around and difficult to stay mad
-              at.<sup>[2]</sup>
-            </p>
-
-            <h2>Early life</h2>
-            <p>
-              Details of Abraham's early years remain largely
-              uneventful, which historians agree is a good sign. He is
-              believed to have developed his sense of humor at a young age,
-              though the exact date of his first bad pun has been lost to
-              time.<sup>[3]</sup>
-            </p>
-
-            <h2>Personal life</h2>
-            <p>
-              Abraham is currently in a relationship with{" "}
-              <a href="#">Tessa</a> (2025–present), described by sources
-              close to the subject as "still new, but already easy."<sup>[4]</sup>{" "}
-              The relationship is, as of this writing, in its early and
-              generally well-received chapters.
-            </p>
-
-            <h2>In popular culture</h2>
-            <p>
-              Abraham has been informally cited as the reason behind several
-              spontaneous smiles and at least one unprompted "happy
-              birthday" web application.<sup>[5]</sup> He remains the
-              subject of an ongoing, unscientific survey titled{" "}
-              <em>Best Laugh in the Room</em>, which he has led since its
-              inception.
-            </p>
+            {WIKI_DATA.sections.map((section) => (
+              <React.Fragment key={section.heading}>
+                <h2>{section.heading}</h2>
+                {section.paragraphs.map((paragraph, i) => (
+                  <p key={i}>{renderParts(paragraph)}</p>
+                ))}
+              </React.Fragment>
+            ))}
 
             <h2>References</h2>
             <ol className="wiki-refs">
-              <li>Tessa (2026). Personal observations. Unpublished.</li>
-              <li>Ibid.</li>
-              <li>"Sources close to the subject," various dates.</li>
-              <li>Tessa (2026), private correspondence.</li>
-              <li>This website. See: everything else in it.</li>
+              {WIKI_DATA.references.map((ref, i) => (
+                <li key={i}>{ref}</li>
+              ))}
             </ol>
           </article>
 
           <aside className="wiki-infobox">
-            <p className="infobox-title">Abraham</p>
-            <img src="/images/gallery/memory-06.webp" alt="Abraham" />
+            <p className="infobox-title">{WIKI_DATA.infobox.title}</p>
+            <img src={WIKI_DATA.infobox.image} alt={WIKI_DATA.infobox.title} />
             <table>
               <tbody>
-                <tr>
-                  <th>Born</th>
-                  <td>September 5</td>
-                </tr>
-                <tr>
-                  <th>Nationality</th>
-                  <td>Indonesian</td>
-                </tr>
-                <tr>
-                  <th>Known for</th>
-                  <td>Bad jokes, great timing</td>
-                </tr>
-                <tr>
-                  <th>Partner</th>
-                  <td>Tessa (2025–present)</td>
-                </tr>
-                <tr>
-                  <th>Notable work</th>
-                  <td>Making Tessa laugh at inconvenient times</td>
-                </tr>
+                {WIKI_DATA.infobox.rows.map((row) => (
+                  <tr key={row.label}>
+                    <th>{row.label}</th>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </aside>
