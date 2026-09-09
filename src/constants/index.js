@@ -109,7 +109,7 @@ const socials = [
     text: "WhatsApp",
     icon: "/icons/whatsapp.svg",
     bg: "#25d366",
-    link: "#", // TODO: replace with real WhatsApp link
+    link: "https://wa.me/6285711242483",
   },
 ];
 
@@ -171,7 +171,7 @@ const photosLinks = [
 ];
 
 const waContacts = [
-  { id: 1, name: "Abraham", active: true, color: "#128C7E" },
+  { id: 1, name: "Tessa", active: true, color: "#128C7E" },
   { id: 2, name: "Arief Hebat", color: "#e17055" },
   { id: 3, name: "Nata Pikun", color: "#6c5ce7" },
   { id: 4, name: "Indah Gaming", color: "#0984e3" },
@@ -191,8 +191,8 @@ export {
 // a single edit for the client to personalize later.
 export const SITE_COPY = {
   welcome: {
-    subtitle: "Happy birthday, my love. This is all for",
-    title: "abraham.",
+    subtitle: "hello",
+    title: "Abraham!",
     mobileNotice:
       "Best viewed on a laptop or tablet, so the animations feel right :)",
   },
@@ -224,46 +224,44 @@ export const SPOTIFY_DATA = {
   },
   tracks: [
     {
-      title: "Can't Help Falling in Love",
-      artist: "Elvis Presley",
-      album: "Blue Hawaii",
-      duration: "3:00",
+      title: "Kota",
+      artist: "Dere",
+      album: "Dere",
+      duration: "3:25",
       cover: "/images/gallery/memory-01.webp",
+      src: "/music/Dere Kota Official Lyric Video.mp3",
     },
     {
-      title: "At Last",
-      artist: "Etta James",
-      album: "At Last!",
-      duration: "3:01",
+      title: "When It's Time",
+      artist: "Green Day",
+      album: "Green Day",
+      duration: "3:24",
       cover: "/images/gallery/memory-04.webp",
+      src: "/music/Green Day When It's Time.mp3",
     },
     {
-      title: "Fly Me to the Moon",
-      artist: "Frank Sinatra",
-      album: "It Might as Well Be Swing",
-      duration: "2:28",
+      title: "Sedia Aku Sebelum Hujan (Live)",
+      artist: "IDGITAF",
+      album: "IDGITAF",
+      duration: "3:55",
       cover: "/images/gallery/memory-07.webp",
+      src: "/music/IDGITAF Live - Sedia Aku Sebelum Hujan.mp3",
     },
     {
-      title: "Something",
-      artist: "The Beatles",
-      album: "Abbey Road",
-      duration: "3:03",
+      title: "Malapetaka",
+      artist: "Juicy Luicy",
+      album: "Juicy Luicy",
+      duration: "4:30",
       cover: "/images/gallery/memory-11.webp",
+      src: "/music/Juicy Luicy Malapetaka Official Music Video.mp3",
     },
     {
-      title: "Just the Way You Are",
-      artist: "Billy Joel",
-      album: "The Stranger",
-      duration: "4:50",
+      title: "Pahina",
+      artist: "Live at The Cozy Cove",
+      album: "Live at The Cozy Cove",
+      duration: "5:20",
       cover: "/images/gallery/memory-14.webp",
-    },
-    {
-      title: "Endless Love",
-      artist: "Diana Ross & Lionel Richie",
-      album: "Endless Love",
-      duration: "4:29",
-      cover: "/images/gallery/memory-18.webp",
+      src: "/music/Pahina Live at The Cozy Cove.mp3",
     },
   ],
 };
@@ -273,6 +271,12 @@ export const LOCK_DATA = {
   avatar: "/images/gallery/memory-06.webp",
   password: "13092002",
   hint: "Hint: your birth date (DDMMYYYY)",
+};
+
+export const GIFT_DATA = {
+  image: "/images/gallery/memory-31.webp",
+  title: "Your gift 🤍",
+  caption: "From Tessa, with love.",
 };
 
 export const LETTER_DATA = {
@@ -432,6 +436,7 @@ const WORK_LOCATION = {
           fileType: "txt",
           position: "top-5 left-10",
           subtitle: "Chapter One",
+          coverImage: "/images/gallery/memory-14.webp",
           description: [
             "Our story didn't take much time to begin. It started with just a conversation—one that somehow went on longer than either of us expected. And honestly, from the very beginning, I already had a feeling that somehow, we were going to be something. Because if there is one thing about me, it's that I always notice the signals first. So yes... maybe I knew before you did. Xixixi.",
             "In the beginning, there were many doubts and question marks. We were both still figuring things out, slowly learning each other and introducing one another to our own little worlds. You came with your past and the hardness the world had taught you, while I came with my imperfections, wounds, and things I was still learning to heal from. We both had our own stories, scars, and ways of protecting ourselves—but somehow, we still found our way to each other.",
@@ -473,6 +478,7 @@ const WORK_LOCATION = {
           fileType: "txt",
           position: "top-5 right-10",
           subtitle: "Chapter Two",
+          coverImage: "/images/gallery/memory-32.webp",
           description: [
             "There are so many little moments with you that I love—the endless conversations, silly jokes, random teasing, our little routines, worshipping together, and all the moments when your jail side comes out. But one memory will always have a very special place in my heart.",
             "When Papah passed away, you were there.",
@@ -494,6 +500,15 @@ const WORK_LOCATION = {
           position: "top-52 left-80",
           imageUrl: "/images/gallery/memory-10.webp",
         },
+        {
+          id: 5,
+          name: "video-1.mp4",
+          icon: "/images/video.png",
+          kind: "file",
+          fileType: "video",
+          position: "top-52 right-80",
+          videoUrl: "/videos/video-1.mp4",
+        },
       ],
     },
 
@@ -514,6 +529,7 @@ const WORK_LOCATION = {
           fileType: "txt",
           position: "top-5 left-10",
           subtitle: "Chapter Three: Happy Birthday, My Love 🤍",
+          coverImage: "/images/gallery/memory-33.webp",
           description: [
             "Today is your day.",
             "And I just want to take this moment to say thank you.",
@@ -640,6 +656,7 @@ const WINDOW_CONFIG = {
   spotify: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  videofile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

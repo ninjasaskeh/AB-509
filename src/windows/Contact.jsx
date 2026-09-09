@@ -3,7 +3,6 @@ import {
   Phone,
   Video,
   MoreVertical,
-  CheckCheck,
   Send,
   MessageCircle,
   Users,
@@ -13,8 +12,9 @@ import {
   Smile,
 } from "lucide-react";
 import WindowWrapper from "@hoc/WindowWrapper.jsx";
-import { socials, waContacts, SITE_COPY, LOCK_DATA } from "@constants/index.js";
+import { waContacts, SITE_COPY } from "@constants/index.js";
 import { WindowControls } from "@components/index.js";
+import useGiftStore from "@store/gift.js";
 
 const initials = (name) =>
   name
@@ -25,7 +25,8 @@ const initials = (name) =>
     .toUpperCase();
 
 const Contact = () => {
-  const whatsapp = socials.find((social) => social.text === "WhatsApp");
+  const { openGift } = useGiftStore();
+  const activeContact = waContacts.find((contact) => contact.active);
 
   return (
     <>
@@ -65,6 +66,7 @@ const Contact = () => {
                   <img
                     src={SITE_COPY.contact.avatar}
                     alt={name}
+                    loading="lazy"
                     className="wa-list-avatar"
                   />
                 ) : (
@@ -85,11 +87,12 @@ const Contact = () => {
           <div className="wa-chat-header">
             <img
               src={SITE_COPY.contact.avatar}
-              alt={LOCK_DATA.name}
+              alt={activeContact?.name}
+              loading="lazy"
               className="wa-avatar"
             />
             <div className="min-w-0">
-              <h3>{LOCK_DATA.name}</h3>
+              <h3>{activeContact?.name}</h3>
               <p className="wa-status">online</p>
             </div>
 
@@ -105,32 +108,23 @@ const Contact = () => {
 
             <div className="wa-bubble">
               <p>{SITE_COPY.contact.bio}</p>
-              <span className="wa-meta">
-                9:41 AM <CheckCheck />
-              </span>
+              <span className="wa-meta">9:41 AM</span>
             </div>
 
             <div className="wa-bubble">
               <p>{SITE_COPY.contact.signoff}</p>
-              <span className="wa-meta">
-                9:41 AM <CheckCheck />
-              </span>
+              <span className="wa-meta">9:41 AM</span>
             </div>
           </div>
 
-          <a
-            href={whatsapp?.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="wa-composer"
-          >
+          <button type="button" onClick={openGift} className="wa-composer">
             <Plus className="wa-composer-icon" />
-            <span className="wa-composer-input">Continue on WhatsApp</span>
+            <span className="wa-composer-input">Claim your gift</span>
             <Smile className="wa-composer-icon" />
             <span className="wa-composer-send">
               <Send className="wa-composer-send-icon" />
             </span>
-          </a>
+          </button>
         </div>
       </div>
     </>

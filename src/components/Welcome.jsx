@@ -74,12 +74,12 @@ const Welcome = () => {
 
   return (
     <section id="welcome">
-      <p ref={subtitleRef}>
-        {renderText(SITE_COPY.welcome.subtitle, "text-3xl font-georama", 100)}
-      </p>
       <h1 ref={titleRef} className="mt-7">
-        {renderText(SITE_COPY.welcome.title, "text-9xl italic font-georama")}
+        {renderText(SITE_COPY.welcome.subtitle, "text-9xl italic font-georama")}
       </h1>
+      <p ref={subtitleRef}>
+        {renderText(SITE_COPY.welcome.title, "text-6xl font-georama", 100)}
+      </p>
 
       <div className="small-screen">
         <p>{SITE_COPY.welcome.mobileNotice}</p>

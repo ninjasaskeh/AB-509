@@ -5,5 +5,17 @@ import WindowControls from "@components/WindowControls.jsx";
 import Home from "@components/Home.jsx";
 import LockScreen from "@components/LockScreen.jsx";
 import PowerScreen from "@components/PowerScreen.jsx";
+import GiftReveal from "@components/GiftReveal.jsx";
+import MiniPlayer from "@components/MiniPlayer.jsx";
 
-export { Navbar, Welcome, Dock, WindowControls, Home, LockScreen, PowerScreen };
+export {
+  Navbar,
+  Welcome,
+  Dock,
+  WindowControls,
+  Home,
+  LockScreen,
+  PowerScreen,
+  GiftReveal,
+  MiniPlayer,
+};

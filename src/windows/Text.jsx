@@ -9,7 +9,7 @@ const Text = () => {
 
   if (!data) return null;
 
-  const { name, subtitle, image, description } = data;
+  const { name, subtitle, image, coverImage, description } = data;
 
   return (
     <>
@@ -19,11 +19,23 @@ const Text = () => {
       </div>
 
       <div className="bg-white dark:bg-neutral-900 max-h-[70vh] overflow-y-auto p-8 transition-colors">
+        {coverImage && (
+          <div className="flex justify-center mb-6">
+            <img
+              src={coverImage}
+              alt={name}
+              loading="lazy"
+              className="max-h-80 w-auto object-contain rounded-lg shadow-sm"
+            />
+          </div>
+        )}
+
         <div className={image ? "flex gap-8" : "max-w-2xl mx-auto space-y-6"}>
           {image && (
             <img
               src={image}
               alt={name}
+              loading="lazy"
               className="w-2/5 shrink-0 self-stretch object-cover rounded-lg shadow-sm"
             />
           )}

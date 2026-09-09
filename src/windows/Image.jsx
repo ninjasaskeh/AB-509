@@ -23,6 +23,7 @@ const Image = () => {
           <img
             src={imageUrl}
             alt={name}
+            loading="lazy"
             className="max-w-full max-h-full object-contain shadow-lg rounded-sm"
           />
         </div>

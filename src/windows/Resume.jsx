@@ -1,17 +1,21 @@
-import React from "react";
+import { lazy, Suspense, useState } from "react";
 import WindowWrapper from "@hoc/WindowWrapper.jsx";
 import { WindowControls } from "@components";
 import { Download } from "lucide-react";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
+import useWindowStore from "@store/window.js";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url,
-).toString();
+const ResumeViewer = lazy(() => import("@windows/ResumeViewer.jsx"));
 
 const Resume = () => {
+  const isOpen = useWindowStore((s) => s.windows.resume.isOpen);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+  const [hasOpened, setHasOpened] = useState(isOpen);
+
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
+    if (isOpen) setHasOpened(true);
+  }
+
   return (
     <>
       <div id="window-header">
@@ -26,9 +30,12 @@ const Resume = () => {
           <Download className="icon" />
         </a>
       </div>
-      <Document file="files/resume.pdf">
-        <Page pageNumber={1} renderAnnotationLayer renderTextLayer />
-      </Document>
+
+      {hasOpened && (
+        <Suspense fallback={<div className="p-8 text-sm text-gray-400">Loading…</div>}>
+          <ResumeViewer />
+        </Suspense>
+      )}
     </>
   );
 };

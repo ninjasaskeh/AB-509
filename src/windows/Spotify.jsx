@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import {
   Home,
   Search,
@@ -16,25 +16,51 @@ import {
 import WindowWrapper from "@hoc/WindowWrapper.jsx";
 import { SPOTIFY_DATA } from "@constants/index.js";
 import { WindowControls } from "@components/index.js";
+import { formatTime } from "@lib/utils.js";
+import usePlayerStore from "@store/player.js";
 
 const Spotify = () => {
-  const { playlist, tracks } = SPOTIFY_DATA;
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const { playlist } = SPOTIFY_DATA;
+  const audioRef = useRef(null);
+  const {
+    tracks,
+    currentIndex,
+    isPlaying,
+    currentTime,
+    duration,
+    setAudioRef,
+    setCurrentTime,
+    setDuration,
+    playTrack,
+    togglePlayback,
+    next,
+    prev,
+    seek,
+    onPlay,
+    onPause,
+  } = usePlayerStore();
 
   const current = tracks[currentIndex];
 
-  const playTrack = (index) => {
-    if (index === currentIndex) {
-      setIsPlaying((prev) => !prev);
-      return;
-    }
-    setCurrentIndex(index);
-    setIsPlaying(true);
-  };
+  useEffect(() => {
+    setAudioRef(audioRef);
+  }, [setAudioRef]);
+
+  const handleSeek = (event) => seek(Number(event.target.value));
+
+  const progressPercent = duration ? (currentTime / duration) * 100 : 0;
 
   return (
     <>
+      <audio
+        ref={audioRef}
+        onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
+        onLoadedMetadata={(e) => setDuration(e.target.duration)}
+        onEnded={next}
+        onPlay={onPlay}
+        onPause={onPause}
+      />
+
       <div id="window-header">
         <WindowControls target="spotify" />
       </div>
@@ -137,24 +163,33 @@ const Spotify = () => {
         <div className="spotify-now-controls">
           <div className="spotify-now-buttons">
             <Shuffle size={15} />
-            <SkipBack size={16} />
+            <SkipBack size={16} onClick={prev} />
             <button
               type="button"
               className="spotify-play-btn"
-              onClick={() => setIsPlaying((prev) => !prev)}
+              onClick={togglePlayback}
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying ? <Pause size={14} /> : <Play size={14} />}
             </button>
-            <SkipForward size={16} />
+            <SkipForward size={16} onClick={next} />
             <Repeat size={15} />
           </div>
           <div className="spotify-progress">
-            <span>1:12</span>
-            <div className="spotify-progress-bar">
-              <div className="spotify-progress-fill" />
-            </div>
-            <span>{current.duration}</span>
+            <span>{formatTime(currentTime)}</span>
+            <input
+              type="range"
+              className="spotify-seek"
+              min={0}
+              max={duration || 0}
+              step={0.1}
+              value={currentTime}
+              onChange={handleSeek}
+              style={{
+                background: `linear-gradient(to right, #fff ${progressPercent}%, rgba(255,255,255,0.2) ${progressPercent}%)`,
+              }}
+            />
+            <span>{duration ? formatTime(duration) : current.duration}</span>
           </div>
         </div>
 

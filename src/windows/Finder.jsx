@@ -32,7 +32,7 @@ const Finder = () => {
               item.id === activeLocation.id ? "active" : "not-active",
             )}
           >
-            <img src={item.icon} className="w-4" alt={item.name} />
+            <img src={item.icon} className="w-4" alt={item.name} loading="lazy" />
             <p className="text-sm font-medium truncate">{item.name}</p>
           </li>
         ))}
@@ -59,7 +59,7 @@ const Finder = () => {
               className={item.position}
               onClick={() => openItem(item)}
             >
-              <img src={item.icon} alt={item.name} />
+              <img src={item.icon} alt={item.name} loading="lazy" />
               <p>{item.name}</p>
             </li>
           ))}

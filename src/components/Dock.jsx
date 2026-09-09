@@ -6,7 +6,8 @@ import { useGSAP } from "@gsap/react";
 import useWindowStore from "@store/window.js";
 
 const Dock = () => {
-  const { openWindow, closeWindow, windows } = useWindowStore();
+  const openWindow = useWindowStore((s) => s.openWindow);
+  const closeWindow = useWindowStore((s) => s.closeWindow);
   const dockRef = useRef(null);
 
   useGSAP(() => {
@@ -56,7 +57,7 @@ const Dock = () => {
   const toggleApp = (app) => {
     if (!app.canOpen) return;
 
-    const window = windows[app.id];
+    const window = useWindowStore.getState().windows[app.id];
 
     if (window.isOpen) {
       closeWindow(app.id);
@@ -83,7 +84,6 @@ const Dock = () => {
               <img
                 src={`/images/${icon}`}
                 alt={name}
-                loading="lazy"
                 className={canOpen ? "" : "opacity-60"}
               />
             </button>

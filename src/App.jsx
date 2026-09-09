@@ -2,10 +2,20 @@ import React from "react";
 import { Draggable } from "gsap/Draggable";
 import gsap from "gsap";
 
-import { Dock, Home, LockScreen, Navbar, PowerScreen, Welcome } from "@components";
+import {
+  Dock,
+  Home,
+  LockScreen,
+  Navbar,
+  PowerScreen,
+  Welcome,
+  GiftReveal,
+  MiniPlayer,
+} from "@components";
 import {
   Finder,
   Image,
+  Video,
   Resume,
   Safari,
   Terminal,
@@ -33,10 +43,14 @@ const App = () => {
       <Resume />
       <Text />
       <Image />
+      <Video />
       <Finder />
       <Contact />
       <Photos />
       <Spotify />
+
+      <GiftReveal />
+      <MiniPlayer />
     </main>
   );
 };
