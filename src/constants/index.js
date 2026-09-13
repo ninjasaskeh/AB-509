@@ -248,7 +248,7 @@ export const SPOTIFY_DATA = {
       src: "/music/Niall Horan This Town Live.mp3",
     },
     {
-      title: "Hutasoit Saonari Sogot Haduan",
+      title: "Saonari Sogot Haduan",
       artist: "Osen Hutasoit",
       album: "Osen Hutasoit",
       duration: "5:43",
